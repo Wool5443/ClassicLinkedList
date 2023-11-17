@@ -14,7 +14,7 @@ int main()
     InsertAfter(2.5, list.head->next);
     InsertBefore(1.5, list.head->next);
 
-    Pop(FindElement(&list, 8).value);
+    Remove(FindElement(&list, 8).value);
 
     PrintList(&list);
 

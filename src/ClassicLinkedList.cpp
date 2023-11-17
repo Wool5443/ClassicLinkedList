@@ -124,7 +124,7 @@ NodeResult InsertBefore(ClassicListElement_t value, Node* before)
     return InsertAfter(value, before->prev);
 }
 
-ClassicListElementResult Pop(Node* node)
+ClassicListElementResult Remove(Node* node)
 {
     MyAssertSoftResult(node, CLASSIC_LIST_POISON, ERROR_NULLPTR);
 

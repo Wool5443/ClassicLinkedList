@@ -48,6 +48,6 @@ NodeResult InsertAfter(ClassicListElement_t value, Node* after);
 
 NodeResult InsertBefore(ClassicListElement_t value, Node* before);
 
-ClassicListElementResult Pop(Node* node);
+ClassicListElementResult Remove(Node* node);
 
 NodeResult FindElement(ClassicList* list, size_t index);
