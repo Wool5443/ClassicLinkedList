@@ -48,18 +48,29 @@ ErrorCode ClassicListDestructor(ClassicList* list)
     list->head = NULL;
     list->tail = NULL;
 
-    return EVERYTHING_FINE;
-}
+    MyAssertSoft(list, ERROR_NULLPTR);
 
-ErrorCode _classicListDestructorRec(Node* node)
-{
-    if (!node)
+    Node* curNode = list->tail;
+    if (!curNode)
         return EVERYTHING_FINE;
 
-    RETURN_ERROR(_classicListDestructorRec(node->next));
-
-    return NodeDestructor(node);
+    while (curNode)
+    {
+        curNode = curNode->prev;
+        RETURN_ERROR(NodeDestructor(curNode->next));
+    }
+    return NodeDestructor(curNode->next);
 }
+
+// ErrorCode _classicListDestructorRec(Node* node)
+// {
+//     if (!node)
+//         return EVERYTHING_FINE;
+
+//     RETURN_ERROR(_classicListDestructorRec(node->next));
+
+//     return NodeDestructor(node);
+// }
 
 ErrorCode PrintList(ClassicList* list)
 {
