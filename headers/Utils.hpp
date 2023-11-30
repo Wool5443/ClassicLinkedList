@@ -33,7 +33,8 @@ enum ErrorCode
     ERROR_INDEX_OUT_OF_BOUNDS, ERROR_NO_MEMORY, ERROR_NO_COMPARATOR, ERROR_BAD_SIZE,
     ERROR_BAD_VALUE, ERROR_DEAD_CANARY, ERROR_BAD_HASH, ERROR_ZERO_DIVISION,
     ERROR_SYNTAX, ERROR_WRONG_LABEL_SIZE, ERROR_TOO_MANY_LABELS,
-    ERROR_NOT_FOUND, ERROR_BAD_FIELDS, ERROR_BAD_TREE, ERROR_NO_ROOT
+    ERROR_NOT_FOUND, ERROR_BAD_FIELDS, ERROR_BAD_TREE, ERROR_NO_ROOT,
+    ERROR_TREE_LOOP, EXIT,
 };
 
 static const char* ERROR_CODE_NAMES[] =
@@ -42,7 +43,8 @@ static const char* ERROR_CODE_NAMES[] =
     "ERROR_INDEX_OUT_OF_BOUNDS", "ERROR_NO_MEMORY", "ERROR_NO_COMPARATOR", "ERROR_BAD_SIZE",
     "ERROR_BAD_VALUE", "ERROR_DEAD_CANARY", "ERROR_BAD_HASH", "ERROR_ZERO_DIVISION",
     "ERROR_SYNTAX", "ERROR_WRONG_LABEL_SIZE", "ERROR_TOO_MANY_LABELS",
-    "ERROR_NOT_FOUND", "ERROR_BAD_FIELDS", "ERROR_BAD_TREE", "ERROR_NO_ROOT"
+    "ERROR_NOT_FOUND", "ERROR_BAD_FIELDS", "ERROR_BAD_TREE", "ERROR_NO_ROOT",
+    "ERROR_TREE_LOOP", "EXIT",
 };
 
 static const size_t SIZET_POISON = (size_t)-1;
@@ -79,7 +81,7 @@ do {                                                                            
     SetConsoleColor(stderr, COLOR_WHITE);                                                                                   \
     __VA_ARGS__;                                                                                                            \
     exit(error);                                                                                                            \
-} while(0);
+} while(0)
 
 /**
  * @brief Transforms a given name into a string.
@@ -107,7 +109,7 @@ do {                                                                            
     SetConsoleColor(stderr, COLOR_WHITE);                                                                                   \
     __VA_ARGS__;                                                                                                            \
     return error;                                                                                                           \
-} while(0);                                                                                                                 \
+} while(0)
 
 /**
  * @brief Soft assert which tells the file, function and line where the error occurred.
@@ -129,7 +131,7 @@ do {                                                                            
     SetConsoleColor(stderr, COLOR_WHITE);                                                                                   \
     __VA_ARGS__;                                                                                                            \
     return {value, error};                                                                                                  \
-} while(0);                                                                                                                 \
+} while(0)
 
 /**
  * @brief Struct to contain where some variable was created.
